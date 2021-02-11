@@ -3,7 +3,7 @@
 #################################
 
 body {
-  font-family : Verdana;
+  font-family: "Lato", sans-serif;
   margin : 0px;
   background : rgb(191,255,99);
 }
@@ -11,7 +11,6 @@ body {
 header {
   color : white;
   background : black;
-  #position : sticky;
   top : 0;
   left : 0;
   width : 100%;

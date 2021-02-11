@@ -1,0 +1,35 @@
+body {
+  font-family: "Lato", sans-serif;
+  margin: 0px;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  padding-bottom: 20px;
+  border-radius: 10px;
+}
+
+
+main {
+  background: pink;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+div {
+  background : white;
+  padding : 30px 30px 10px 30px;
+  margin-bottom : 20px;
+  border-radius: 10px;
+}
+
+a {
+  color: rgb(72,0,171);
+  /*background-color: rgb(184,248,255);*/
+  text-decoration: None;
+  /*padding: 5px;*/
+  border-radius; 10px;
+}

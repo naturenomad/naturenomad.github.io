@@ -1,0 +1,46 @@
+body {
+  font-family: "Lato", sans-serif;
+  margin: 0px;
+  background-image: linear-gradient(rgb(0,207,255), rgb(251,249,32));
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  padding-bottom: 20px;
+  border-radius: 10px;
+}
+
+main {
+  padding: 30px;
+  /*display: flex;
+  flex-direction: column;
+  align-items: center;*/
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
+  justify-items: center;
+}
+
+div {
+  display: block;
+  background: rgb(253,255,169);
+  padding : 30px 30px 30px 30px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 800px;
+}
+
+h1 {
+  text-align: center;
+}
+
+#img-caption {
+  padding: 0px;
+}
+
+a {
+  color: rgb(72,0,171);
+  text-decoration: None;
+  border-radius; 10px;
+}

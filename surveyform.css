@@ -1,6 +1,6 @@
 body {
   text-align: center;
-  font-family: "Lato", sans-serif; ; /* CA */
+  font-family: "Lato", sans-serif; 
   color: white;
   background-color: rgb(1,36,92);
   background-image: url("https://clipartart.com/images/natural-resource-clipart-open-source-7.png");
@@ -58,12 +58,15 @@ input[type=checkbox], input[type=radio] {
   bottom: 1px;
 } 
 
+::placeholder {
+  font-size: 14px;
+}
+
 #submit {
-    background-color: rgb(77, 209, 83);
+  background-color: rgb(77, 209, 83);
 	height: 40px;
 	color: white;
 	border: None;
-	/*font-weight: bold;*/
 	font-size: 1.0em;
 	cursor: pointer;
 }

@@ -16,7 +16,6 @@ body {
 
 #surveyform {
   text-align: left;
-
   background-color: rgb(1,36,92, 0.8);
   width: 50%;
   margin: auto;
@@ -63,7 +62,7 @@ input[type=checkbox], input[type=radio] {
 }
 
 #comments {
-  border-radius: 5px;	
+  border-radius: 5px;
 }
 
 #submit {
@@ -73,5 +72,22 @@ input[type=checkbox], input[type=radio] {
 	border: None;
 	font-size: 1.0em;
 	cursor: pointer;
-	border-radius: 5px;
+  border-radius: 5px;
+}
+
+@media only screen and (max-width: 552px) {
+  #checkboxes, #radios {
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    padding-bottom: 0px;
+  }
+  
+  legend {
+    padding-bottom: 5px;
+  }
+  
+  input[type=text], input[type=email], input[type=number] {
+    width: 95%;
+  }
 }

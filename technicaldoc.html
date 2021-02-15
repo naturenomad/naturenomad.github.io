@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel='stylesheet' type='text/css' href='technicaldoc.css'/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <nav id="navbar">
+    <div id="navwrapper">
+      <a href="#" id="navheader"><header>Node.js Documentation</header></a>
+      <div id="navlinkswrapper">
+        <a href="#background" class="nav-link">Background</a>
+        <a href="#thenodecommand" class="nav-link">The Node Command</a>
+        <a href="#modules" class="nav-link">Modules</a>
+        <a href="#summary" class="nav-link">Summary</a>
+        <a href="#reference" class="nav-link">Reference</a>
+      </div>
+    </div>
+  </nav>
+  <main id="main-doc">
+    <section class="main-section">
+      <header id="background">Background</header>
+      <p>One of the more difficult problems with writing systems that communicate over the network is managing input and output - that is, the reading and writing of data to and from the network and hard drive. Moving data around takes time, and scheduling it cleverly can make a big difference in how quickly a system responds to the user or to network requests.
+      </p>
+      <p>In such programs, asynchronous programming is often helpful. It allows the program to send and receive data from and to multiple devices at the same time without complicated thread management and synchronization.
+      </p>
+      <p>Node was initially conceived for the purpose of making asynchronous programming easy and convenient. JavaScript lends itself well to a system like Node. It is one of the few programming languages that does not have a built-in way to do in- and output. Thus, JavaScript could be fit onto Node's rather eccentric approach to in- and output without ending up with two inconsistent interfaces. In 2009, when Node was being designed, people were already doing callback-based programming in the browser, so the community around the language was used to an asynchronous programming style.
+      </p>
+    </section>
+    <section class="main-section">
+      <header id="thenodecommand">The Node Command</header>
+      <p>When Node.js is installed on a system, it provides a program called node, which is used to run JavaScript files. Say you have a file hello.js, containing this code:
+        </p>
+      <code>
+        let message = "Hello world";
+        <br/>console.log(message);
+      </code>
+      <p>You can then run node from the command line like this to execute the program:
+      </p>
+      <code>$ node hello.js
+      <br/>Hello world
+      </code>
+      <p>The console.log method in Node does something similar to what it does in the browser. It prints out a piece of text. But in Node, the text will go to the process's standard output stream, rather than to a browser's JavaScript console. When running node from the command line, that means you see the logged values in your terminal.
+      </p>
+      <p>If you run node without giving it a file, it provides you with a prompt at which you can type JavaScript code and immediately see the result.
+      </p>
+      <code>$ node
+      <br/>> 1 + 1
+      <br/>2
+      <br/>> [-1, -2, -3].map(Math.abs)
+      <br/>[1, 2, 3]
+      <br/>> process.exit(0)
+      <br/>$
+      </code>
+      <p>The process binding, just like the console binding, is available globally in Node. It provides various ways to inspect and manipulate the current program. The exit method ends the process and can be given an exit status code, which tells the program that started node (in this case, the command line shell) whether the program completed successfully (code zero) or encountered an error (any other code).
+      </p>
+      <p>To find the command line arguments given to your script, you can read process.argv, which is an array of strings. Note that it also includes the name of the node command and your script name, so the actual arguments start at index 2. If showargv.js contains the statement console.log(process.argv), you could run it like this:
+      </p>
+      <code>$ node showargv.js one --and two
+      <br/>["node", "/tmp/showargv.js", "one", "--and", "two"]
+      </code>
+      <p>All the standard JavaScript global bindings, such as Array, Math, and JSON, are also present in Node's environment. Browser-related functionality, such as document or prompt, is not.
+	    </p>
+    </section>
+    <section class="main-section">
+	    <header id="modules">Modules</header>
+      <p>Beyond the bindings I mentioned, such as console and process, Node puts few additional bindings in the global scope. If you want to access built-in functionality, you have to ask the module system for it.
+      </p>
+      <p>The CommonJS module system, based on the require function, was described in Chapter 10. This system is built into Node and is used to load anything from built-in modules to downloaded packages to files that are part of your own program.
+      </p>
+      <p>When require is called, Node has to resolve the given string to an actual file that it can load. Pathnames that start with /, ./, or ../ are resolved relative to the current module's path, where . stands for the current directory, ../ for one directory up, and / for the root of the file system. So if you ask for "./graph" from the file /tmp/robot/robot.js, Node will try to load the file /tmp/robot/graph.js.
+      </p>
+      <p>The .js extension may be omitted, and Node will add it if such a file exists. If the required path refers to a directory, Node will try to load the file named index.js in that directory.
+      </p>
+      <p>When a string that does not look like a relative or absolute path is given to require, it is assumed to refer to either a built-in module or a module installed in a node_modules directory. For example, require("fs") will give you Node's built-in file system module. And require("robot") might try to load the library found in node_modules/robot/. A common way to install such libraries is by using NPM, which we'll come back to in a moment.
+      </p>
+      <p>Let's set up a small project consisting of two files. The first one, called main.js, defines a script that can be called from the command line to reverse a string.
+      </p>
+      <code>const {reverse} = require("./reverse");
+      <br/>
+      <br/>// Index 2 holds the first actual command line argument
+      <br/>let argument = process.argv[2];
+      <br/>
+      <br/>console.log(reverse(argument));
+      </code>
+      <p>The file reverse.js defines a library for reversing strings, which can be used both by this command line tool and by other scripts that need direct access to a string-reversing function.
+      </p>
+      <code>exports.reverse = function(string) {
+      <br/>  return Array.from(string).reverse().join("");
+      <br/>};
+      </code>
+      <p>Remember that adding properties to exports adds them to the interface of the module. Since Node.js treats files as CommonJS modules, main.js can take the exported reverse function from reverse.js.
+      </p>
+      <p>We can now call our tool like this:
+      </p>
+      <code>$ node main.js JavaScript
+      <br/>tpircSavaJ
+      </code>
+      <p/>
+	  </section>
+    <section class="main-section">
+      <header id="summary">Summary</header>
+      <p>Node is a nice, small system that lets us run JavaScript in a nonbrowser context. It was originally designed for network tasks to play the role of a node in a network. But it lends itself to all kinds of scripting tasks, and if writing JavaScript is something you enjoy, automating tasks with Node works well.
+      </p>
+      <p>NPM provides packages for everything you can think of (and quite a few things you'd probably never think of), and it allows you to fetch and install those packages with the npm program. Node comes with a number of built-in modules, including the fs module for working with the file system and the http module for running HTTP servers and making HTTP requests.
+      </p>
+      <p>All input and output in Node is done asynchronously, unless you explicitly use a synchronous variant of a function, such as readFileSync. When calling such asynchronous functions, you provide callback functions, and Node will call them with an error value and (if available) a result when it is ready.
+      </p>	
+    </section>
+    <section class="main-section">
+      <header id="reference">Reference</header>
+      <p>With thanks, this documentation is re-distributed under the 
+      <a href="https://creativecommons.org/licenses/by-nc/3.0/" target="_blank">Creative Commons attribution-noncommercial license</a> 
+       from the online version of <a href="https://eloquentjavascript.net" target="_blank">the following book</a> -</p>	
+      <ul>
+        <li>Eloquent JavaScript
+        <br/>3rd edition (2018)
+        </li>
+        <li>Copyright (C) 2008-2020 by Marijn Haverbeke marijnh@gmail.com
+        </li>
+        <li>Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        </li>
+        <li>The above copyright notice and this permission notice shall be included in
+        all copies or substantial portions of the Software.
+        </li>
+        <li>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+        THE SOFTWARE.
+        </li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
+

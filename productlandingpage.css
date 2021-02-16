@@ -1,0 +1,135 @@
+
+/*
+User Story #14: My product landing page should have at least one media query.
+
+User Story #15: My product landing page should utilize CSS flexbox at least once.
+
+
+*/
+
+html {
+  overflow-x: hidden;
+  overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+:target:before {
+    content: "";
+    display: block;
+    height: 100px;
+    margin: -100px 0 0;
+}
+
+body {
+  position: relative;
+  padding: 100px 0px 0px 0px;
+  margin: 0px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+article {
+  font-size: 14px;
+  background-color: rgb(50,50,50);
+  padding: 15px;
+  margin: 10px 0px 10px 0px;
+  /*box-shadow: 1px 2px 3px rgba(0,0,0,.5);*/
+}
+
+h3 {
+  font-size: 18px;
+  margin: 0px 0px 5px 0px;
+  
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100px;
+  background-color: white;
+  display: grid;
+  grid-template-rows: auto 20%;
+  z-index: 200;
+}
+
+#navbar {
+  width: 100%;
+  height: 80px;
+  background-color: white;
+}
+
+#header-img {
+  float:left;
+  vertical-align: text-bottom;
+  transform: translate(0px, 6px);
+}
+
+#navheader {
+  float: left;
+  height: 100%;
+  font-size: 30px;
+}
+
+#navlinks {
+  float:right;
+  margin-right: 20px;
+  height: 100%;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 20px;
+  align-items: end;
+}
+
+.nav_link {
+  text-decoration: none;  
+  color: black;
+}
+
+.spacer {
+  height: 20px;
+  background-color: pink;
+}
+
+main {
+  background-color: black;
+  color: white;
+  padding: 20px;
+  margin: 0px;
+}
+
+div.sticky {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 138px;
+  width: 100%;
+}
+
+#intro {
+  z-index: 50;
+}
+
+#bethechange {
+  /*position: relative;*/
+  z-index: 100;
+  background-color: black;
+  /*position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 138px;*/
+}
+
+#news {
+  /*position: relative;*/
+  z-index: 110;
+  background-color: black;
+}
+
+#donate {
+  z-index: 120;
+  background-color: black;
+  /*position: relative;*/
+}
+

@@ -11,6 +11,12 @@ html {
   overflow-x: hidden;
   overflow-y: auto;
     scroll-behavior: smooth;
+  height: 100%;
+  margin: 0;
+}
+
+.page {
+  height: 100vh;
 }
 
 :target:before {
@@ -20,10 +26,29 @@ html {
     margin: -100px 0 0;
 }
 
+#bethechange:target:before {
+    content: "";
+    display: block;
+    /*height: 10px;
+    margin: -10px 0 0;*/
+    height: 0;
+    margin: 0;
+}
+
+#about:target:before {
+    content: "";
+    display: block;
+    /*height: 10px;
+    margin: -10px 0 0;*/
+    height: 0;
+    margin: 0
+}/**/
+
 body {
   position: relative;
   padding: 100px 0px 0px 0px;
   margin: 0px;
+  background: black;
 }
 
 a {
@@ -91,14 +116,15 @@ header {
 
 .spacer {
   height: 20px;
-  background-color: pink;
+  background-color: green;
 }
 
 main {
-  background-color: black;
+  background: black;
   color: white;
   padding: 20px;
   margin: 0px;
+  position:relative;
 }
 
 div.sticky {
@@ -109,27 +135,42 @@ div.sticky {
 }
 
 #intro {
-  z-index: 50;
+  /*z-index: 50;*/
+  background: black;
+  position: -webkit-sticky;/* Safari */
+  position: sticky;
+  top: 138px;
+  width: 100%;  
 }
 
 #bethechange {
-  /*position: relative;*/
-  z-index: 100;
-  background-color: black;
-  /*position: -webkit-sticky; /* Safari */
+  /*position: relative;
+  z-index: 100;*/
+  background: black;
+  position: -webkit-sticky;/* Safari */
   position: sticky;
-  top: 138px;*/
+  top: 138px;
+  width: 100%;
 }
 
 #news {
-  /*position: relative;*/
-  z-index: 110;
-  background-color: black;
+  position: relative;
+  /*z-index: 110;*/
+  background: black;
+  /*margin: 0;*/
+  padding: 0px 0px 10px 0px;
+  margin-bottom: 138px;
 }
 
-#donate {
-  z-index: 120;
-  background-color: black;
-  /*position: relative;*/
+#about {
+  /*z-index: 120;*/
+  background: black;
+  /*margin: 0;
+  position: relative;*/
+  position: -webkit-sticky;/* Safari */
+  position: sticky;
+  top: 138px;
+  width: 100%;
+  /*margin: 138px 0 0;
+  width: 100%;*/
 }
-

@@ -213,3 +213,11 @@ div.sticky {
   /*margin: 138px 0 0;
   width: 100%;*/
 }
+
+footer {
+  font-size: 12px;
+  background-color: rgb(203,255,139, 0.6); 
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
+}

@@ -77,4 +77,8 @@ a {
   h1 {
      font-size : 24px;
   }
+  
+  body {
+    font-size: 15px;
+  }
 }

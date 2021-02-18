@@ -1,9 +1,17 @@
 
 /*
-User Story #14: My product landing page should have at least one media query.
 
 User Story #15: My product landing page should utilize CSS flexbox at least once.
 
+Issues :
+
+Mobile version How page showing at bottom of news due to screen cutoff
+
+Menu collapse for mobile version
+
+Menu not backclicking on firefox
+
+Put in video
 
 */
 
@@ -196,6 +204,7 @@ div.sticky {
   }
 }
 
+/*
 @keyframes shake {
   0% { transform: translate(0.5px, 0.0px) rotate(0.25deg); }
   10% { transform: translate(-0.0px, -0.5px) rotate(0deg); }
@@ -208,7 +217,7 @@ div.sticky {
   80% { transform: translate(-0.0px, -0.5px) rotate(0deg); }
   90% { transform: translate(0.5px, 0.0px) rotate(0deg); }
   100% { transform: translate(0.0px, -0.5px) rotate(0.25deg); }
-}
+}*/
 
 #t1 {
   animation-delay: 7s;
